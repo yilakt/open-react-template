@@ -112,9 +112,9 @@ const Hero = ({
           >
             <a
               data-video="https://player.vimeo.com/video/174002812"
-              href="#0"
+              // href="#0"
               aria-controls="video-modal"
-              onClick={openModal}
+              onClick={() => null}
             >
               <Image
                 className="has-shadow"

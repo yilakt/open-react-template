@@ -2,11 +2,26 @@ import React, { useContext, useState, useEffect } from "react";
 import Modal from "react-modal";
 // import CloseIcon from "@mui/icons-material/Close";
 import toast from "react-simple-toasts";
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
+
 import { isMobile } from "react-device-detect";
 import GlobalContext from "../../context/globalContext";
+
 const DefaultModal = ({}) => {
   const { globalState, setGlobalContext } = useContext(GlobalContext);
+  const [email, setEmail] = useState("");
 
+  const handleSubmit = () => {
+    if (!email) {
+      toast("Missing email field", 3000);
+      return;
+    }
+    // save to firebase
+    firebase.database().ref("/prelaunchSignups").push(email);
+    toast("We'll be notifying you soon!", 6000);
+    setGlobalContext({ ...globalState, showDefaultModal: false });
+  };
   return (
     <Modal
       isOpen={globalState?.showDefaultModal}
@@ -39,24 +54,59 @@ const DefaultModal = ({}) => {
           fontWeight: "bold",
           margin: 0,
           padding: 0,
+          color: "black",
         }}
       >
-        We're going from Beta to official Launch!
+        We're Officially Launching On June 8, 2022
       </p>
+      <div
+        style={{
+          marginTop: "5%",
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+        }}
+      >
+        <form>
+          <label>
+            Get notified:
+            <input
+              placeholder="Enter your email"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+        </form>
+        <div
+          style={{
+            backgroundColor: "white",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+          onClick={() => handleSubmit()}
+        >
+          <p style={{ color: "blue", fontSize: 50, cursor: "pointer" }}>➮</p>
+        </div>
+      </div>
     </Modal>
   );
 };
 
 const customStyles = {
   overlay: {
-    backgroundColor: "#CCC",
+    backgroundColor: "transparent",
   },
   content: {
-    backgroundColor: "rgba(255, 255, 255, 1)",
+    backgroundColor: "#fff",
     top: "50%",
     left: "50%",
     width: "70%",
-    height: "50%",
+    minHeight: "10%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",

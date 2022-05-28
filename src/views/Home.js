@@ -13,6 +13,7 @@ const Home = () => {
   const { globalState, setGlobalContext } = useContext(GlobalContext);
 
   if (globalState?.showDefaultModal) {
+    console.log("in here");
     return <DefaultModal />;
   }
 

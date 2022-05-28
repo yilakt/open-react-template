@@ -3,7 +3,9 @@ import { useLocation, Switch } from "react-router-dom";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
 import ReactGA from "react-ga";
-
+import firebase from "firebase/compat/app";
+// import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "./firebaseConfig";
 // Layouts
 import LayoutDefault from "./layouts/LayoutDefault";
 
@@ -11,8 +13,9 @@ import LayoutDefault from "./layouts/LayoutDefault";
 import Home from "./views/Home";
 // import ContactUs from "./views/ContactUs";
 
-// Initialize Google Analytics
+// Initialize Google Analytics & Firebase
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
+firebase.initializeApp(firebaseConfig);
 
 const trackPage = (page) => {
   ReactGA.set({ page });
