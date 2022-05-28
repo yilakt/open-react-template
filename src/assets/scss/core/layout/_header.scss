@@ -24,12 +24,24 @@
 	height: $header-height__mobile;
 }
 
+.site-header-inner-logo {
+    display: flex;
+	align-items: center;
+	height: $header-height__mobile;
+}
+
 .header-nav {
 	flex-grow: 1;
 
 	.header-nav-inner {
 		display: flex;
 		flex-grow: 1;
+	}
+
+	.header-nav-inner-logo {
+		display: flex;
+		flex-direction: row;
+		padding: $header-nav--padding-v__mobile;
 	}
 
     ul {
@@ -113,6 +125,8 @@
 				padding: $header-nav--padding-v__mobile;
 			}
 
+			
+
 			ul {
 				display: block;
 				text-align: center;
@@ -149,4 +163,5 @@
 	.site-header-inner {
 		height: $header-height__desktop;
 	}
+	
 }
