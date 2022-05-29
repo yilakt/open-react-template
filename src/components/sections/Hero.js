@@ -68,8 +68,8 @@ const Hero = ({
               className="mt-0 mb-16 reveal-from-bottom"
               data-reveal-delay="200"
             >
-              Exciting & fun challenges for{" "}
-              <span className="text-color-primary">couples</span>
+              Exciting Ideas For{" "}
+              <span className="text-color-primary">Dates</span>
             </h1>
             <div className="container-xs">
               <p
