@@ -3,6 +3,7 @@ import { useLocation, Switch } from "react-router-dom";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
 import ReactGA from "react-ga";
+
 import firebase from "firebase/compat/app";
 // import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebaseConfig";
