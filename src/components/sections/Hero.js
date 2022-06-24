@@ -6,6 +6,8 @@ import Button from "../elements/Button";
 import Image from "../elements/Image";
 import Modal from "../elements/Modal";
 import GlobalContext from "../../context/globalContext";
+import amplitude from "amplitude-js";
+
 const propTypes = {
   ...SectionProps.types,
 };
@@ -53,6 +55,10 @@ const Hero = ({
   );
 
   const renderModal = () => {
+    if (!globalState?.showDefaultModal)
+      amplitude
+        .getInstance()
+        .logEvent("prelaunch c2a pressed - play/app store icon");
     setGlobalContext({
       ...globalState,
       showDefaultModal: !globalState.showDefaultModal,

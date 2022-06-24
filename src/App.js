@@ -3,6 +3,7 @@ import { useLocation, Switch } from "react-router-dom";
 import AppRoute from "./utils/AppRoute";
 import ScrollReveal from "./utils/ScrollReveal";
 import ReactGA from "react-ga";
+import amplitude from "amplitude-js";
 
 import firebase from "firebase/compat/app";
 // import { initializeApp } from "firebase/app";
@@ -12,10 +13,13 @@ import LayoutDefault from "./layouts/LayoutDefault";
 
 // Views
 import Home from "./views/Home";
+import Terms from "./views/Terms";
 // import ContactUs from "./views/ContactUs";
 
 // Initialize Google Analytics & Firebase
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
+amplitude.getInstance().init(process.env.REACT_APP_AMPLITUDE_SECRET);
+
 firebase.initializeApp(firebaseConfig);
 
 const trackPage = (page) => {
@@ -41,6 +45,12 @@ const App = () => {
       children={() => (
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          <AppRoute
+            exact
+            path="/terms"
+            component={Terms}
+            layout={LayoutDefault}
+          />
         </Switch>
       )}
     />

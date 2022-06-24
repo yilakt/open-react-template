@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "amplitude-js": "^8.18.4",
     "classnames": "^2.2.6",
     "firebase": "^9.8.2",
     "ga-4-react": "^0.1.281",

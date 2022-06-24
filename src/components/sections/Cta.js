@@ -5,6 +5,8 @@ import { SectionProps } from "../../utils/SectionProps";
 import Input from "../elements/Input";
 import Image from "../elements/Image";
 import GlobalContext from "../../context/globalContext";
+import amplitude from "amplitude-js";
+
 const propTypes = {
   ...SectionProps.types,
   split: PropTypes.bool,
@@ -45,6 +47,10 @@ const Cta = ({
   );
 
   const renderModal = () => {
+    if (!globalState?.showDefaultModal)
+      amplitude
+        .getInstance()
+        .logEvent("prelaunch c2a pressed - play/app store icon");
     setGlobalContext({
       ...globalState,
       showDefaultModal: !globalState.showDefaultModal,
